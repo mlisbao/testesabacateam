@@ -1,57 +1,32 @@
 import streamlit as st
 
-# Dados fictícios para os recintos portuários da ABTRA
-dados_recintos = [
-    {"nome": "Recinto A", "movimentacao": "1500 TEUs", "capacidade": "2000 TEUs", "cidade": "Santos"},
-    {"nome": "Recinto B", "movimentacao": "1300 TEUs", "capacidade": "1800 TEUs", "cidade": "Paranaguá"},
-    {"nome": "Recinto C", "movimentacao": "1700 TEUs", "capacidade": "2200 TEUs", "cidade": "Rio de Janeiro"},
-    {"nome": "Recinto D", "movimentacao": "1200 TEUs", "capacidade": "1600 TEUs", "cidade": "Itajaí"}
-]
+# Função para estilizar os cartões
+def card_style(card_title, card_value, card_color):
+    st.markdown(
+        f"""
+        <div style='background-color: {card_color}; 
+                    padding: 20px; 
+                    border-radius: 10px;
+                    margin: 10px 0;'>
+            <h2 style='color: white; text-align: center;'>{card_title}</h2>
+            <p style='color: white; text-align: center; font-size: 24px;'>{card_value}</p>
+        </div>
+        """, unsafe_allow_html=True
+    )
 
-# Configurações da página
-st.set_page_config(page_title="Recintos Portuários da ABTRA", layout="wide")
-st.markdown("""
-    <style>
-    .stColumn {
-        border: 2px solid #4CAF50;  /* Cor da borda */
-        padding: 10px;
-        border-radius: 10px;  /* Bordas arredondadas */
-        background-color: #f9f9f9;  /* Cor de fundo */
-        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);  /* Sombras leves */
-    }
-    </style>
-""", unsafe_allow_html=True)
+# Título do dashboard
+st.title("Dashboard de Exemplo com Cartões")
 
-# Título
-st.title("Recintos Portuários da ABTRA")
+# Layout do dashboard com 4 colunas
+col1, col2 = st.columns(2)
 
-# Criando 4 colunas de tamanho médio no topo da página
-col1, col2, col3, col4 = st.columns(4)
-
-# Preenchendo as colunas com os dados dos recintos
+# Cartões na primeira coluna
 with col1:
-    st.subheader(dados_recintos[0]["nome"])
-    st.write(f"Movimentação: {dados_recintos[0]['movimentacao']}")
-    st.write(f"Capacidade: {dados_recintos[0]['capacidade']}")
-    st.write(f"Cidade: {dados_recintos[0]['cidade']}")
+    card_style("Usuários Ativos", "1,245", "#1f77b4")
+    card_style("Novos Cadastros", "315", "#ff7f0e")
 
+# Cartões na segunda coluna
 with col2:
-    st.subheader(dados_recintos[1]["nome"])
-    st.write(f"Movimentação: {dados_recintos[1]['movimentacao']}")
-    st.write(f"Capacidade: {dados_recintos[1]['capacidade']}")
-    st.write(f"Cidade: {dados_recintos[1]['cidade']}")
+    card_style("Vendas Mensais", "R$ 24,000", "#2ca02c")
+    card_style("Visitas no Site", "8,760", "#d62728")
 
-with col3:
-    st.subheader(dados_recintos[2]["nome"])
-    st.write(f"Movimentação: {dados_recintos[2]['movimentacao']}")
-    st.write(f"Capacidade: {dados_recintos[2]['capacidade']}")
-    st.write(f"Cidade: {dados_recintos[2]['cidade']}")
-
-with col4:
-    st.subheader(dados_recintos[3]["nome"])
-    st.write(f"Movimentação: {dados_recintos[3]['movimentacao']}")
-    st.write(f"Capacidade: {dados_recintos[3]['capacidade']}")
-    st.write(f"Cidade: {dados_recintos[3]['cidade']}")
-
-# Rodapé ou outras informações adicionais podem ser inseridas aqui
-st.write("Dados fornecidos pela ABTRA")
