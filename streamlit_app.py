@@ -10,6 +10,17 @@ dados_recintos = [
 
 # Configurações da página
 st.set_page_config(page_title="Recintos Portuários da ABTRA", layout="wide")
+st.markdown("""
+    <style>
+    .stColumn {
+        border: 2px solid #4CAF50;  /* Cor da borda */
+        padding: 10px;
+        border-radius: 10px;  /* Bordas arredondadas */
+        background-color: #f9f9f9;  /* Cor de fundo */
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);  /* Sombras leves */
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # Título
 st.title("Recintos Portuários da ABTRA")
